@@ -4,6 +4,16 @@ MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 # Install nodejs
 RUN apt-get install -qq -y nodejs
 
+# Intall software-properties-common for add-apt-repository
+RUN apt-get install -qq -y software-properties-common
+
+# Install Nginx.
+RUN add-apt-repository -y ppa:nginx/stable
+RUN apt-get update
+RUN apt-get install -qq -y nginx
+RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+RUN chown -R www-data:www-data /var/lib/nginx
+
 # Install foreman
 RUN gem install foreman
 
@@ -25,5 +35,8 @@ ONBUILD ADD Gemfile /app/Gemfile
 ONBUILD ADD Gemfile.lock /app/Gemfile.lock
 ONBUILD RUN bundle install --without development test
 ONBUILD ADD . /app
+
+# Install nginx conf
+ONBUILD RUN cp /app/config/container/nginx-sites.conf /etc/nginx/sites-enabled/default
 
 ENV RAILS_ENV production
