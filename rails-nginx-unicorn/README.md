@@ -32,6 +32,10 @@ $ docker build -t your/project .
 $ docker run -d -p 80:80 -e SECRET_KEY_BASE=secretkey your/project
 ```
 
+## Screencast
+
+[Easy Ruby On Rails deploy on Docker](http://youtu.be/QgmzBuPuM6I)
+
 # Customize Nginx, Unicorn, foreman config
 
 ## Nginx
