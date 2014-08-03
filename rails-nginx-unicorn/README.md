@@ -19,6 +19,7 @@ MAINTAINER seapy(iamseapy@gmail.com)
 EXPOSE 80
 ```
 
+* Add `unicorn` gem(maybe uncomment `gem 'unicorn'` in `Gemfile`)
 * Copy your `~/.ssh/id_rsa` to `id_rsa` for bitbucket connection. if you don't need to bitbucket connection, create blank `id_rsa`. don't forget add `id_rsa` to `.gitignore`
 
 ## Build and run docker
