@@ -70,4 +70,4 @@ FROM seapy/rails-nginx-unicorn:ruby2.1.2-nginx1.6.0
 # TODO
 
 * github connection setting(like bitbucket)
-* screencast
+* think about preinstall library(like imagemagick, nokogiri). installed before bundle install, but currently impossible. maybe remove "bundle install && Add source file" from main Dockerfile to user Dockerfile.
