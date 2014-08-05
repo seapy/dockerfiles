@@ -25,11 +25,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --force-yes libpq-dev
 
-# SSH config for bitbucket.org
-RUN mkdir /root/.ssh/
-ONBUILD ADD id_rsa /root/.ssh/id_rsa
-ONBUILD RUN touch /root/.ssh/known_hosts
-ONBUILD RUN ssh-keyscan -t rsa bitbucket.org >> /root/.ssh/known_hosts
+## Install MySQL(for mysql, mysql2 gem)
+RUN apt-get install -qq -y libmysqlclient-dev
 
 # Install Rails App
 WORKDIR /app
@@ -37,8 +34,10 @@ ONBUILD ADD Gemfile /app/Gemfile
 ONBUILD ADD Gemfile.lock /app/Gemfile.lock
 ONBUILD RUN bundle install --without development test
 ONBUILD ADD . /app
+
 # Add default unicorn config
 ADD unicorn.rb /app/config/unicorn.rb
+
 # Add default foreman config
 ADD Procfile /app/Procfile
 

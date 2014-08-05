@@ -5,7 +5,7 @@ Easy useable docker for rails. less configuration, affordable production.
 ## What's include
 
 * unicorn, nginx, foreman
-
+* mysql, postgresql lib
 
 # Usage
 
@@ -20,7 +20,6 @@ EXPOSE 80
 ```
 
 * Add `unicorn` gem(maybe uncomment `gem 'unicorn'` in `Gemfile`)
-* Copy your `~/.ssh/id_rsa` to `id_rsa` for bitbucket connection. if you don't need to bitbucket connection, create blank `id_rsa`. don't forget add `id_rsa` to `.gitignore`
 
 ## Build and run docker
 
@@ -35,6 +34,12 @@ $ docker run -d -p 80:80 -e SECRET_KEY_BASE=secretkey your/project
 ## Screencast
 
 [Easy Ruby On Rails deploy on Docker](http://youtu.be/QgmzBuPuM6I)
+
+
+# Custom pre-install lib
+
+if your rails app required pre-install lib like imagemagick(or others) use [`rails-nginx-unicorn-pro`](https://github.com/seapy/dockerfiles/tree/master/rails-nginx-unicorn-pro)
+
 
 # Customize Nginx, Unicorn, foreman config
 
@@ -70,4 +75,3 @@ FROM seapy/rails-nginx-unicorn:ruby2.1.2-nginx1.6.0
 # TODO
 
 * github connection setting(like bitbucket)
-* think about preinstall library(like imagemagick, nokogiri). installed before bundle install, but currently impossible. maybe remove "bundle install && Add source file" from main Dockerfile to user Dockerfile.
