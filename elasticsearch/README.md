@@ -1,5 +1,8 @@
 # What's differ `dockerfile/elasticsearch`
 
+* image tagging
+* java 8
+* use es commandline option
 * pre install useful plugin
   * HQ
   * bigdesk
@@ -14,7 +17,7 @@
 # x.x.x.x server
 $ docker run -d -p 9200:9200 -p 9300:9300 \
     -v /data/elasticsearch:/data/mnt \
-    seapy/elasticsearch \
+    seapy/elasticsearch:java8-es1.4 \
      --node.name=$(hostname) \
      --network.publish_host=$(hostname -i) \
      --discovery.zen.ping.multicast.enabled=false \
@@ -25,13 +28,26 @@ $ docker run -d -p 9200:9200 -p 9300:9300 \
 # y.y.y.y server
 $ docker run -d -p 9200:9200 -p 9300:9300 \
     -v /data/elasticsearch:/data/mnt \
-    seapy/elasticsearch \
+    seapy/elasticsearch:java8-es1.4 \
      --node.name=$(hostname) \
      --network.publish_host=$(hostname -i) \
      --discovery.zen.ping.multicast.enabled=false \
      --discovery.zen.ping.unicast.hosts=x.x.x.x:9300,y.y.y.y:9300
 ```
 
+## options usage
+
+```shell
+$ docker run -d -p 9200:9200 -p 9300:9300 \
+    -v /data/elasticsearch:/data/mnt \
+    -e ES_HEAP_SIZE=14g \
+    seapy/elasticsearch:java8-es1.4 \
+     --node.name=$(hostname) \
+     --cluster.name=ironman_elastic \
+     --network.publish_host=$(hostname -i) \
+     --discovery.zen.ping.multicast.enabled=false \
+     --discovery.zen.ping.unicast.hosts=x.x.x.x:9300,y.y.y.y:9300
+```
 
 # Override conf
 
@@ -41,6 +57,11 @@ you can overrinde config option like `cluster.name: my_cluster`
 docker run -d ... seapy/elasticsearch --cluster.name: my_cluster
 ```
 
+# How to build
+
+```shell
+$ docker build -t seapy/elasticsearch:java8-es1.4 .
+```
 
 # Info
 

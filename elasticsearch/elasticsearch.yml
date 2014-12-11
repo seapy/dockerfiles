@@ -1,7 +1,7 @@
 cluster.name: elastic_docker
 
 # path
-path.conf: /data/conf
+path.conf: /elasticsearch/config
 path.data: /data/mnt/data
 path.logs: /data/mnt/log
 path.plugins: /elasticsearch/plugins
