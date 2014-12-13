@@ -27,3 +27,12 @@ shard_timeout: ::SHARD_TIMEOUT::
 # Set to false to have a complete disregard for the validity of the SSL
 # certificate.
 verifySSL: ::VERIFY_SSL::
+
+# Plugins that are included in the build, and no longer found in the plugins/ folder
+bundledPluginIds:
+ - plugins/dashboard/index
+ - plugins/discover/index
+ - plugins/settings/index
+ - plugins/table_vis/index
+ - plugins/vis_types/index
+ - plugins/visualize/index
