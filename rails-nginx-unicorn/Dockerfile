@@ -1,6 +1,8 @@
 FROM seapy/ruby:2.1.2
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
+RUN apt-get update
+
 # Install nodejs
 RUN apt-get install -qq -y nodejs
 
