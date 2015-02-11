@@ -1,4 +1,4 @@
-FROM seapy/ruby:2.1.2
+FROM seapy/ruby:2.2.0
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
 # Install nodejs

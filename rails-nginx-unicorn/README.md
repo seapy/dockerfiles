@@ -67,7 +67,7 @@ Change `FROM` instruction your Dockerfile
 
 ```
 # Dockerfile
-FROM seapy/rails-nginx-unicorn:ruby2.1.2-nginx1.6.0
+FROM seapy/rails-nginx-unicorn:ruby2.2.0-nginx1.6.0
 ...
 ```
 
