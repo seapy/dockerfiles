@@ -17,7 +17,7 @@
 # x.x.x.x server
 $ docker run -d -p 9200:9200 -p 9300:9300 \
     -v /data/elasticsearch:/data/mnt \
-    seapy/elasticsearch:java8-es1.4 \
+    seapy/elasticsearch:java8-es1.4.4 \
      --node.name=$(hostname) \
      --network.publish_host=$(hostname -i) \
      --discovery.zen.ping.multicast.enabled=false \
@@ -28,7 +28,7 @@ $ docker run -d -p 9200:9200 -p 9300:9300 \
 # y.y.y.y server
 $ docker run -d -p 9200:9200 -p 9300:9300 \
     -v /data/elasticsearch:/data/mnt \
-    seapy/elasticsearch:java8-es1.4 \
+    seapy/elasticsearch:java8-es1.4.4 \
      --node.name=$(hostname) \
      --network.publish_host=$(hostname -i) \
      --discovery.zen.ping.multicast.enabled=false \
@@ -41,7 +41,7 @@ $ docker run -d -p 9200:9200 -p 9300:9300 \
 $ docker run -d -p 9200:9200 -p 9300:9300 \
     -v /data/elasticsearch:/data/mnt \
     -e ES_HEAP_SIZE=14g \
-    seapy/elasticsearch:java8-es1.4 \
+    seapy/elasticsearch:java8-es1.4.4 \
      --node.name=$(hostname) \
      --cluster.name=ironman_elastic \
      --network.publish_host=$(hostname -i) \
@@ -60,7 +60,7 @@ docker run -d ... seapy/elasticsearch --cluster.name: my_cluster
 # How to build
 
 ```shell
-$ docker build -t seapy/elasticsearch:java8-es1.4 .
+$ docker build -t seapy/elasticsearch:java8-es1.4.4 .
 ```
 
 # Info

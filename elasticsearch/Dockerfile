@@ -1,7 +1,7 @@
 FROM dockerfile/java:oracle-java8
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
-ENV ES_PKG_NAME elasticsearch-1.4.0
+ENV ES_PKG_NAME elasticsearch-1.4.4
 
 # Install ElasticSearch.
 RUN \
@@ -27,7 +27,7 @@ ENV ES_HEAP_SIZE 1g
 
 ADD elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
-RUN ["/elasticsearch/bin/plugin", "--install", "lmenezes/elasticsearch-kopf/1.4.3"]
+RUN ["/elasticsearch/bin/plugin", "--install", "lmenezes/elasticsearch-kopf/1.4.6"]
 RUN ["/elasticsearch/bin/plugin", "--install", "royrusso/elasticsearch-HQ"]
 RUN ["/elasticsearch/bin/plugin", "--install", "lukas-vlcek/bigdesk"]
 RUN ["/elasticsearch/bin/plugin", "--install", "mobz/elasticsearch-head"]
