@@ -5,33 +5,40 @@ port: ::KIBANA_PORT::
 host: "::KIBANA_HOST::"
 
 # The Elasticsearch instance to use for all your queries.
-elasticsearch: "::ES_URL::"
+elasticsearch_url: "::ES_URL::"
+
+# preserve_elasticsearch_host true will send the hostname specified in `elasticsearch`. If you set it to false,
+# then the host you use to connect to *this* Kibana instance will be sent.
+elasticsearch_preserve_host: true
 
 # Kibana uses an index in Elasticsearch to store saved searches, visualizations
 # and dashboards. It will create a new index if it doesn't already exist.
-kibanaIndex: "::KIBANA_INDEX::"
+kibana_index: "::KIBANA_INDEX::"
 
 # The default application to load.
-defaultAppId: "::APP_ID::"
+default_app_id: "::APP_ID::"
 
-# Time in seconds to wait for responses from the back end or elasticsearch.
-# Note this should always be higher than "shard_timeout".
+# Time in milliseconds to wait for responses from the back end or elasticsearch.
 # This must be > 0
 request_timeout: ::REQUEST_TIMEOUT::
 
+
 # Time in milliseconds for Elasticsearch to wait for responses from shards.
-# Note this should always be lower than "request_timeout".
-# Set to 0 to disable (not recommended).
+# Set to 0 to disable.
 shard_timeout: ::SHARD_TIMEOUT::
 
 # Set to false to have a complete disregard for the validity of the SSL
 # certificate.
-verifySSL: ::VERIFY_SSL::
+verify_ssl: ::VERIFY_SSL::
 
 # Plugins that are included in the build, and no longer found in the plugins/ folder
-bundledPluginIds:
+bundled_plugin_ids:
  - plugins/dashboard/index
  - plugins/discover/index
+ - plugins/doc/index
+ - plugins/kibana/index
+ - plugins/markdown_vis/index
+ - plugins/metric_vis/index
  - plugins/settings/index
  - plugins/table_vis/index
  - plugins/vis_types/index

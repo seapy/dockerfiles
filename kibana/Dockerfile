@@ -1,6 +1,6 @@
 FROM dockerfile/java:oracle-java8
 
-ENV KIBANA_PKG_NAME kibana-4.0.0-BETA2
+ENV KIBANA_PKG_NAME kibana-4.0.1-linux-x64
 
 RUN \
   cd /tmp && \
@@ -13,8 +13,8 @@ ENV KIBANA_HOST 0.0.0.0
 ENV ES_URL http://example.es.com:9200
 ENV KIBANA_INDEX .kibana
 ENV APP_ID discover
-ENV REQUEST_TIMEOUT 60
-ENV SHARD_TIMEOUT 30000
+ENV REQUEST_TIMEOUT 300000
+ENV SHARD_TIMEOUT 0
 ENV VERIFY_SSL false
 
 ADD kibana.yml /kibana/config/kibana.yml
