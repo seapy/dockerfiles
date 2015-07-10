@@ -1,13 +1,7 @@
-FROM seapy/ruby:2.2.0
+FROM ruby:2.2.2
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
-RUN apt-get update
-
-# Install nodejs
-RUN apt-get install -qq -y nodejs
-
-# Intall software-properties-common for add-apt-repository
-RUN apt-get install -qq -y software-properties-common
+RUN apt-get update -qq && apt-get install -y build-essential
 
 # Install Nginx.
 RUN add-apt-repository -y ppa:nginx/stable
@@ -21,20 +15,11 @@ ADD nginx-sites.conf /etc/nginx/sites-enabled/default
 # Install foreman
 RUN gem install foreman
 
-# Install the latest postgresql lib for pg gem
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y --force-yes libpq-dev
-
-## Install MySQL(for mysql, mysql2 gem)
-RUN apt-get install -qq -y libmysqlclient-dev
-
 # Install Rails App
 WORKDIR /app
 ONBUILD ADD Gemfile /app/Gemfile
 ONBUILD ADD Gemfile.lock /app/Gemfile.lock
-ONBUILD RUN bundle install --without development test
+ONBUILD RUN bundle install
 ONBUILD ADD . /app
 
 # Add default unicorn config
@@ -43,6 +28,4 @@ ADD unicorn.rb /app/config/unicorn.rb
 # Add default foreman config
 ADD Procfile /app/Procfile
 
-ENV RAILS_ENV production
-
-CMD bundle exec rake assets:precompile && foreman start -f Procfile
+CMD foreman start -f Procfile
