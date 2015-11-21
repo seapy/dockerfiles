@@ -5,19 +5,14 @@
 * use es commandline option
 * pre install useful plugin
   * HQ
-  * bigdesk
-  * kopf
-  * head
-  * paramedic
-
 
 # Usage
 
 ```shell
 # x.x.x.x server
 $ docker run -d -p 9200:9200 -p 9300:9300 \
-    -v /data/elasticsearch:/data/mnt \
-    seapy/elasticsearch:java8-es1.4.4 \
+    -v /mnt/elasticsearch:/data \
+    seapy/elasticsearch:java8-es2.0.0 \
      --node.name=$(hostname) \
      --network.publish_host=$(hostname -i) \
      --discovery.zen.ping.multicast.enabled=false \
@@ -27,8 +22,8 @@ $ docker run -d -p 9200:9200 -p 9300:9300 \
 ```shell
 # y.y.y.y server
 $ docker run -d -p 9200:9200 -p 9300:9300 \
-    -v /data/elasticsearch:/data/mnt \
-    seapy/elasticsearch:java8-es1.4.4 \
+    -v /mnt/elasticsearch:/data \
+    seapy/elasticsearch:java8-es2.0.0 \
      --node.name=$(hostname) \
      --network.publish_host=$(hostname -i) \
      --discovery.zen.ping.multicast.enabled=false \
@@ -39,9 +34,9 @@ $ docker run -d -p 9200:9200 -p 9300:9300 \
 
 ```shell
 $ docker run -d -p 9200:9200 -p 9300:9300 \
-    -v /data/elasticsearch:/data/mnt \
+    -v /mnt/elasticsearch:/data \
     -e ES_HEAP_SIZE=14g \
-    seapy/elasticsearch:java8-es1.4.4 \
+    seapy/elasticsearch:java8-es2.0.0 \
      --node.name=$(hostname) \
      --cluster.name=ironman_elastic \
      --network.publish_host=$(hostname -i) \
@@ -60,7 +55,7 @@ docker run -d ... seapy/elasticsearch --cluster.name: my_cluster
 # How to build
 
 ```shell
-$ docker build -t seapy/elasticsearch:java8-es1.4.4 .
+$ docker build -t seapy/elasticsearch:java8-es2.0.0 .
 ```
 
 # Info

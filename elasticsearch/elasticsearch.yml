@@ -1,12 +1,4 @@
-cluster.name: elastic_docker
-
-# path
-path.conf: /elasticsearch/config
-path.data: /data/mnt/data
-path.logs: /data/mnt/log
-path.plugins: /elasticsearch/plugins
-path.work: /data/mnt/work
-
-# index option
-index.number_of_shards: 5
-index.number_of_replicas: 1
+path:
+  data: /data/data
+  logs: /data/log
+  plugins: /data/plugins
