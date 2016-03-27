@@ -1,4 +1,4 @@
-FROM seapy/ruby:2.2.0
+FROM seapy/ruby:2.3.0
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
 RUN apt-get update
