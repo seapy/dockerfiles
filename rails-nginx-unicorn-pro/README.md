@@ -52,12 +52,14 @@ if your rails app required lib like imagemagick(or mysql) you must install that 
 ## Install imagemagick
 
 ```
+RUN apt-get udpate
 RUN apt-get -qq -y install libmagickwand-dev imagemagick
 ```
 
 ## Install MySQL(for mysql, mysql2 gem)
 
 ```
+RUN apt-get udpate
 RUN apt-get install -qq -y mysql-server mysql-client libmysqlclient-dev
 ```
 
