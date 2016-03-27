@@ -83,6 +83,11 @@ RUN ssh-keyscan -t rsa bitbucket.org >> /root/.ssh/known_hosts
 
 Copy your `~/.ssh/id_rsa` to `id_rsa` for bitbucket connection. if you don't need to bitbucket connection, create blank `id_rsa`. don't forget add `id_rsa` to `.gitignore`
 
+# Log check using docker logs
+
+Add below line to `config/environments/production.rb`
+
+`config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))`
 
 # Customize Nginx, Unicorn, foreman config
 
@@ -102,4 +107,3 @@ place your unicorn config to `config/unicorn.rb`
 ## foreman
 
 place your Procfile to app root
-
