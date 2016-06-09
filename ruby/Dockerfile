@@ -18,10 +18,10 @@ RUN cd /tmp &&\
   make install
 
 # Install MRI Ruby
-RUN ruby-install ruby 2.3.0
+RUN ruby-install ruby 2.3.1
 
 # Add Ruby binaries to $PATH
-ENV PATH /opt/rubies/ruby-2.3.0/bin:$PATH
+ENV PATH /opt/rubies/ruby-2.3.1/bin:$PATH
 
 # Add options to gemrc
 RUN echo "install: --no-document\nupdate: --no-document" > ~/.gemrc
