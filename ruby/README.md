@@ -8,5 +8,5 @@
 
 ```
 # Dockerfile
-FROM seapy/ruby:2.3.0
+FROM seapy/ruby:2.3.1
 ```
