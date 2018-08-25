@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
 RUN apt-get update
@@ -12,16 +12,16 @@ RUN apt-get update
 
 # Install ruby-install
 RUN cd /tmp &&\
-  wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz &&\
-  tar -xzvf ruby-install-0.6.0.tar.gz &&\
-  cd ruby-install-0.6.0/ &&\
+  wget -O ruby-install-0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz &&\
+  tar -xzvf ruby-install-0.7.0.tar.gz &&\
+  cd ruby-install-0.7.0/ &&\
   make install
 
 # Install MRI Ruby
-RUN ruby-install ruby 2.3.1
+RUN ruby-install ruby 2.5.1
 
 # Add Ruby binaries to $PATH
-ENV PATH /opt/rubies/ruby-2.3.1/bin:$PATH
+ENV PATH /opt/rubies/ruby-2.5.1/bin:$PATH
 
 # Add options to gemrc
 RUN echo "install: --no-document\nupdate: --no-document" > ~/.gemrc
