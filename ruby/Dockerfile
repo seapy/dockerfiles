@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER ChangHoon Jeong <iamseapy@gmail.com>
 
 RUN apt-get update
@@ -18,13 +18,10 @@ RUN cd /tmp &&\
   make install
 
 # Install MRI Ruby
-RUN ruby-install ruby 2.5.1
+RUN ruby-install ruby 2.6.1
 
 # Add Ruby binaries to $PATH
-ENV PATH /opt/rubies/ruby-2.5.1/bin:$PATH
+ENV PATH /opt/rubies/ruby-2.6.1/bin:$PATH
 
 # Add options to gemrc
 RUN echo "install: --no-document\nupdate: --no-document" > ~/.gemrc
-
-# Install bundler
-RUN gem install bundler
